@@ -167,7 +167,7 @@ class HanskenStorageFs implements IFileSystem {
         const traceUid = fn.substring(slash + 1, lastSlash);
         const dataType = fn.substring(lastSlash + 1);
         
-        return this.client.project(projectId).data(traceUid, dataType);
+        return this.client.project(projectId).trace(traceUid).data(dataType);
     }
 
     put(fn: string, data: any): Promise<IFsItem> {
