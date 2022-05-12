@@ -102,6 +102,13 @@ class AppController {
         if (debugUserTypes) debugUserTypes += "\n\n";
         this.ui.genCodeViewer.setValue(debugUserTypes + fileNames.map(x => compiled.release[x]).join(""), -1);
         this.ui.genCodeDebugViewer.setValue(debugUserTypes + fileNames.map(x => compiled.debug[x]).join(""), -1);
+        
+        compiled = await this.compile(ksyFsItem, srcYaml, "python", "both");
+        if (!compiled) return;
+
+        fileNames = Object.keys(compiled.release);
+        this.ui.genPythonCodeViewer.setValue(debugUserTypes + fileNames.map(x => compiled.release[x]).join(""), -1);
+
         await this.reparse();
     }
 

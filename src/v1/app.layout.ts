@@ -74,6 +74,7 @@ export class UI {
     ksyEditor: AceAjax.Editor;
     genCodeViewer: AceAjax.Editor;
     genCodeDebugViewer: AceAjax.Editor;
+    genPythonCodeViewer: AceAjax.Editor;
     parsedDataTreeCont: GoldenLayout.Container;
     parsedDataTreeHandler: ParsedTreeHandler;
     hexViewer: HexViewer;
@@ -101,6 +102,7 @@ export class UI {
                                 { type: "stack", id: "codeTab", activeItemIndex: 2, content: [
                                     { type: "component", componentName: "genCodeViewer", title: "JS code", isClosable: false },
                                     { type: "component", componentName: "genCodeDebugViewer", title: "JS code (debug)", isClosable: false },
+                                    { type: "component", componentName: "genPythonCodeViewer", title: "Python", isClosable: false },
                                     { type: "column", isClosable: false, id: "inputBinaryTab", title: "input binary", content: [
                                         { type: "component", componentName: "hexViewer", title: "hex viewer", isClosable: false },
                                         { type: "row", isClosable: false, height: 35, content: [
@@ -119,6 +121,7 @@ export class UI {
         this.layout.addEditor("ksyEditor", "yaml");
         this.layout.addEditor("genCodeViewer", "javascript", true);
         this.layout.addEditor("genCodeDebugViewer", "javascript", false);
+        this.layout.addEditor("genPythonCodeViewer", "python", true);
         this.layout.addComponent("hexViewer", () => {
             var hexViewer = new HexViewer("#hexViewer");
             hexViewer.bytesPerLine = parseInt(localStorage.getItem("HexViewer.bytesPerLine")) || 16;
